@@ -1,3 +1,5 @@
+import slice from 'ramda/src/slice'
+import prop from 'ramda/src/prop'
 import 'regenerator-runtime/runtime'
 
 // FORM SUBMIT
@@ -11,10 +13,13 @@ const fetchCivicData = async (zip) => {
 }
 const submitZipcode = async (e) => {
 	e.preventDefault()
-	const zipcode = document.querySelector('#zip').value
+	const zipcode = prop('value', document.querySelector('#zip'))
 	fetchCivicData(zipcode)
 		.then((data) => {
-			console.log(data)
+			const officeLowerThanVP = slice(
+				2, Infinity, prop('offices', data)
+			)
+			console.log(officeLowerThanVP)
 		})
 }
 zipForm.addEventListener('submit', submitZipcode)
