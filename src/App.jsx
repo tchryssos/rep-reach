@@ -9,7 +9,6 @@ import './App.css'
 const emptyArr = []
 const App = () => {
 	const [reps, setReps] = useState(emptyArr)
-	console.log(reps)
 	return (
 		<div class="bodyWrapper">
 			<AddressForm setReps={setReps} />
@@ -18,7 +17,7 @@ const App = () => {
 				reps,
 			)}
 		</div>
-)
+	)
 }
 
 export default App
