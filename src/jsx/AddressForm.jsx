@@ -10,8 +10,8 @@ const AddressForm = ({ setReps }) =>  {
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
-		const offices = await submitZipCode(value)
-		console.log(offices)
+		const reps = await submitZipCode(value)
+		setReps(reps)
 	}
 
 	const onInput = (e) => {
