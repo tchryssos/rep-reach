@@ -11,7 +11,6 @@ const AddressForm = ({ setReps }) =>  {
 	const onSubmit = async (e) => {
 		e.preventDefault()
 		const repsByLevel = await submitZipCode(value)
-		console.log(repsByLevel)
 		setReps(repsByLevel)
 	}
 

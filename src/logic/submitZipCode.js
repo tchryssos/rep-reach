@@ -16,7 +16,6 @@ const buildOffices = (offices, civicData) => reduceBy(
 	(acc, office) => (
 		acc.concat({
 			officeName: prop('name', office),
-			officeLevel: path(['levels', 0], office),
 			officials: map(
 				(index) => {
 					const official = prop(index, prop('officials', civicData))
@@ -39,7 +38,6 @@ const buildOffices = (offices, civicData) => reduceBy(
 export default async (zipcode) => {
 	const formattedRepData = await fetchCivicData(zipcode)
 		.then((data) => {
-			console.log(data)
 			const officesLowerThanVP = slice(
 				2, Infinity, prop('offices', data)
 			)
