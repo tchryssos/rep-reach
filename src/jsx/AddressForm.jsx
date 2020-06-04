@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import { h } from 'preact'
 import { useState } from 'preact/hooks'
 
 import submitZipCode from '/src/logic/submitZipCode'
