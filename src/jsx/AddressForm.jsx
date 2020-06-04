@@ -5,13 +5,12 @@ import submitZipCode from '/src/logic/submitZipCode'
 
 import './AddressForm.css'
 
-const AddressForm = ({ setReps }) =>  {
+const AddressForm = ({ setReps, setState, setCity }) =>  {
 	const [value, setValue] = useState('')
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
-		const repsByLevel = await submitZipCode(value)
-		setReps(repsByLevel)
+		await submitZipCode(value, setReps, setState, setCity)
 	}
 
 	const onInput = (e) => {
