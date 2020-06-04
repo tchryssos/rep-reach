@@ -29,11 +29,12 @@ const buildOffices = (offices, civicData) => map(
 )
 
 export default async (zipcode) => {
-	await fetchCivicData(zipcode)
+	const formattedRepData = await fetchCivicData(zipcode)
 		.then((data) => {
 			const officesLowerThanVP = slice(
 				2, Infinity, prop('offices', data)
 			)
 			return buildOffices(officesLowerThanVP, data)
 		})
+		return formattedRepData
 }

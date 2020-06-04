@@ -1,40 +1,39 @@
 import { h, Component } from 'preact'
+import { useState } from 'preact/hooks'
 
 import submitZipCode from '/src/logic/submitZipCode'
 
 import './AddressForm.css'
 
-class AddressForm extends Component {
-	state = { value: '' }
+const AddressForm = ({ setReps }) =>  {
+	const [value, setValue] = useState('')
 
-	onSubmit = async (e) => {
+	const onSubmit = async (e) => {
 		e.preventDefault()
-		const offices = await submitZipCode(this.state.value)
+		const offices = await submitZipCode(value)
 		console.log(offices)
 	}
 
-	onInput = (e) => {
+	const onInput = (e) => {
 		const { value } = e.target
-		this.setState({ value })
+		setValue(value)
 	}
 
-	render(_, { value }) {
-		return (
-			<form id="addressForm" onSubmit={this.onSubmit}>
-				<label for="zip">
-					Zipcode:
-					<input
-						id="zip"
-						name="zip"
-						value={value}
-						type="text"
-						onInput={this.onInput}
-					/>
-				</label>
-				<input class="submit" type="submit" />
-			</form>
-		)
-	}
+	return (
+		<form id="addressForm" onSubmit={onSubmit}>
+			<label for="zip">
+				Zipcode:
+				<input
+					id="zip"
+					name="zip"
+					value={value}
+					type="text"
+					onInput={onInput}
+				/>
+			</label>
+			<input class="submit" type="submit" />
+		</form>
+	)
 }
 
 export default AddressForm
