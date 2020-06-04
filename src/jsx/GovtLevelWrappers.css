@@ -1,3 +1,21 @@
-.levelWrapper {
-	
+.levelSection {
+	width: 100%;
+	max-width: 500px;
+}
+
+.sectionHeader {
+	display: flex;
+	align-items: center;
+}
+
+.sectionTitleWrapper {
+	flex-grow: 1;
+	flex-shrink: 0;
+}
+
+.sectionDivider {
+	height: 1px;
+	background-color: black;
+	margin-left: 8px;
+	width: 100%;
 }
