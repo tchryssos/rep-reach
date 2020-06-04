@@ -1,0 +1,9 @@
+#addressForm {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
+	padding: 8px;
+	width: -moz-fit-content;
+	width: fit-content;
+	align-items: center;
+}
