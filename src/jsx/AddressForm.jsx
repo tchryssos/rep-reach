@@ -10,7 +10,7 @@ const AddressForm = ({ setReps, setState, setCity }) =>  {
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
-		await submitZipCode(value, setReps, setState, setCity)
+		await submitZipCode(value, setValue, setReps, setState, setCity)
 	}
 
 	const onInput = (e) => {

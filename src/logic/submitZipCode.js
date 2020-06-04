@@ -35,7 +35,7 @@ const buildOffices = (offices, civicData) => reduceBy(
 	offices,
 )
 
-export default async (zipcode, setReps, setState, setCity) => {
+export default async (zipcode, setValue, setReps, setState, setCity) => {
 	const formattedRepData = await fetchCivicData(zipcode)
 		.then((data) => {
 			const officesLowerThanVP = slice(
@@ -46,5 +46,5 @@ export default async (zipcode, setReps, setState, setCity) => {
 			return buildOffices(officesLowerThanVP, data)
 		})
 		setReps(formattedRepData)
-
+		setValue('')
 }
