@@ -23,6 +23,8 @@ const buildOffices = (offices, civicData) => map(
 					officialName: prop('name', official),
 					officialPhones: prop('phones', official),
 					officialEmails: prop('emails', official),
+					officialChannels: prop('channels', official),
+					officialPages: prop('urls', official),
 				}
 			}, prop('officialIndices', office),
 		)

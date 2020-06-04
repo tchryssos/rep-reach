@@ -12,9 +12,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-class-properties": "^7.10.1",
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "ramda": "^0.27.0"
+    "preact": "^10.4.4",
+    "ramda": "^0.27.0",
+    "src": "^1.1.2"
   }
 }
