@@ -7,9 +7,10 @@ import './AddressForm.css'
 class AddressForm extends Component {
 	state = { value: '' }
 
-	onSubmit = (e) => {
+	onSubmit = async (e) => {
 		e.preventDefault()
-		 const offices = submitZipCode(e.target.value)
+		const offices = await submitZipCode(this.state.value)
+		console.log(offices)
 	}
 
 	onInput = (e) => {
@@ -22,7 +23,13 @@ class AddressForm extends Component {
 			<form id="addressForm" onSubmit={this.onSubmit}>
 				<label for="zip">
 					Zipcode:
-					<input id="zip" name="zip" value={value} type="text" />
+					<input
+						id="zip"
+						name="zip"
+						value={value}
+						type="text"
+						onInput={this.onInput}
+					/>
 				</label>
 				<input class="submit" type="submit" />
 			</form>

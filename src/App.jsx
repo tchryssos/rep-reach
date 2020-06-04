@@ -5,7 +5,7 @@ import AddressForm from '/src/jsx/AddressForm.jsx'
 import './App.css'
 
 const App = () => (
-		<div>
+		<div class="bodyWrapper">
 			<AddressForm />
 		</div>
 )

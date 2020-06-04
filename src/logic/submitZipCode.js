@@ -28,10 +28,8 @@ const buildOffices = (offices, civicData) => map(
 	}), offices,
 )
 
-export default async (e) => {
-	e.preventDefault()
-	const zipcode = prop('value', document.querySelector('#zip'))
-	fetchCivicData(zipcode)
+export default async (zipcode) => {
+	await fetchCivicData(zipcode)
 		.then((data) => {
 			const officesLowerThanVP = slice(
 				2, Infinity, prop('offices', data)

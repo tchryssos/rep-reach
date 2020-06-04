@@ -17,32 +17,10 @@ h1 {
 	font-size:60px;
 }
 
-input {
-	margin-top: 16px;
-}
-
-input:first-child {
-	margin-top: 0;
-}
-
 .bodyWrapper {
 	margin: 16px;
 }
 
 .sectionPadding {
 	margin-top: 16px;
-}
-
-#zipForm {
-	display: flex;
-	flex-direction: column;
-	border: 1px solid black;
-	padding: 8px;
-	width: -moz-fit-content;
-	width: fit-content;
-	align-items: center;
-}
-
-.submit {
-	width: 120px;
 }
