@@ -1,10 +1,11 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import map from 'ramda/src/map'
 import includes from 'ramda/src/includes'
 
 import CityIcon from '/src/static/city.svg'
-import StateIcons from '/src/static/states.svg'
 import CapitolIcon from '/src/static/capitol-building.svg'
+
+import StateDefsSvg from '/src/jsx/StateDefsSvg.jsx'
 
 import './GovtLevelWrappers.css'
 
@@ -16,7 +17,7 @@ const LevelSection = ({ level, reps, city, state }) => {
 		sectionData.icon = CityIcon
 	} else if (includes('administrativeArea', level)) {
 		sectionData.title = `${state} State`
-		sectionData.icon = StateIcons
+		// sectionData.icon = StateIcons
 	} else {
 		sectionData.title = 'National'
 		sectionData.icon = CapitolIcon
@@ -38,16 +39,21 @@ const GovtLevelWrappers = ({ levels, reps, city, state }) => {
 	if (!levels.length) {
 		return null
 	}
-	return map(
-		(level) => (
-			<LevelSection
-				level={level}
-				reps={reps}
-				city={city}
-				state={state}
-			/>
-		),
-		levels,
+	return (
+		<Fragment>
+			<StateDefsSvg />
+			{map(
+				(level) => (
+					<LevelSection
+						level={level}
+						reps={reps}
+						city={city}
+						state={state}
+					/>
+				),
+				levels,
+			)}
+		</Fragment>
 	)
 }
 
