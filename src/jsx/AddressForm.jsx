@@ -25,26 +25,28 @@ const AddressForm = ({ setReps, setState, setCity }) =>  {
 
 	return (
 		<form id="addressForm" onSubmit={onSubmit}>
-			<label for="street">
-				Street Address:
-				<input
-					id="street"
-					name="street"
-					value={prop('street', value)}
-					type="text"
-					onInput={onInput}
-				/>
-			</label>
-			<label for="zip">
-				Zipcode:
-				<input
-					id="zip"
-					name="zip"
-					value={prop('zip', value)}
-					type="text"
-					onInput={onInput}
-				/>
-			</label>
+			<div class="inputWrapper">
+				<label for="street">
+					Street Address:
+					<input
+						id="street"
+						name="street"
+						value={prop('street', value)}
+						type="text"
+						onInput={onInput}
+					/>
+				</label>
+				<label for="zip">
+					Zipcode:
+					<input
+						id="zip"
+						name="zip"
+						value={prop('zip', value)}
+						type="text"
+						onInput={onInput}
+					/>
+				</label>
+			</div>
 			<input class="submit" type="submit" />
 		</form>
 	)
