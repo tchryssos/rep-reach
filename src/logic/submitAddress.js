@@ -44,6 +44,8 @@ const buildOffices = (offices, civicData) => reduceBy(
 			case 'sldu':
 			case 'cd':
 				return 'state'
+			case 'council_district':
+				return 'county'
 			default:
 				return title
 		}
