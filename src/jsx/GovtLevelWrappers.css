@@ -11,6 +11,7 @@
 .sectionTitleWrapper {
 	flex-grow: 1;
 	flex-shrink: 0;
+	text-transform: capitalize;
 }
 
 .sectionDivider {

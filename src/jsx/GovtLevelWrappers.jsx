@@ -10,18 +10,17 @@ import StateDefsSvg from '/src/jsx/StateDefsSvg.jsx'
 import './GovtLevelWrappers.css'
 
 const LevelSection = ({ level, reps, city, state }) => {
-	const sectionData = { title: '', icon: '' }
+	const sectionData = { title: level, icon: '' }
 
-	if (level === 'locality') {
-		sectionData.title = city
-		sectionData.icon = CityIcon
-	} else if (includes('administrativeArea', level)) {
-		sectionData.title = `${state} State`
-		// sectionData.icon = StateIcons
-	} else {
-		sectionData.title = 'National'
-		sectionData.icon = CapitolIcon
-	}
+	// if (level === '') {
+	// 	sectionData.icon = CityIcon
+	// } else if (includes('administrativeArea', level)) {
+	// 	sectionData.title = `${state} State`
+	// 	// sectionData.icon = StateIcons
+	// } else {
+	// 	sectionData.title = 'National'
+	// 	sectionData.icon = CapitolIcon
+	// }
 
 	return (
 		<div class="levelSection">

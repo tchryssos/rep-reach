@@ -3,6 +3,9 @@ import prop from 'ramda/src/prop'
 import path from 'ramda/src/path'
 import map from 'ramda/src/map'
 import reduceBy from 'ramda/src/reduceBy'
+import split from 'ramda/src/split'
+import last from 'ramda/src/last'
+import head from 'ramda/src/head'
 import 'regenerator-runtime/runtime'
 
 const fetchCivicData = async (addressString) => {
@@ -31,7 +34,20 @@ const buildOffices = (offices, civicData) => reduceBy(
 		})
 	),
 	[],
-	(office) => path(['levels', 0], office),
+	(office) => {
+		const currentDivision = last(split('/', prop('divisionId', office)))
+		const title = head(split(':', currentDivision))
+		switch (title) {
+			case 'place':
+				return 'city'
+			case 'sldl':
+			case 'sldu':
+			case 'cd':
+				return 'state'
+			default:
+				return title
+		}
+	},
 	offices,
 )
 
@@ -40,7 +56,6 @@ export default async (value, setValue, setReps, setState, setCity) => {
 	const addressString = encodeURIComponent(`${street}${zip}`)
 	const formattedRepData = await fetchCivicData(addressString)
 		.then((data) => {
-			console.log(data)
 			const officesLowerThanVP = slice(
 				2, Infinity, prop('offices', data)
 			)
@@ -48,6 +63,7 @@ export default async (value, setValue, setReps, setState, setCity) => {
 			setState(path(['normalizedInput', 'state'], data))
 			return buildOffices(officesLowerThanVP, data)
 		})
+		console.log(formattedRepData)
 		setReps(formattedRepData)
 		setValue({ street: '', zip: ''})
 }
