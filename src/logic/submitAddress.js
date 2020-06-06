@@ -63,7 +63,6 @@ export default async (value, setValue, setReps, setState, setCity) => {
 			setState(path(['normalizedInput', 'state'], data))
 			return buildOffices(officesLowerThanVP, data)
 		})
-		console.log(formattedRepData)
 		setReps(formattedRepData)
 		setValue({ street: '', zip: ''})
 }

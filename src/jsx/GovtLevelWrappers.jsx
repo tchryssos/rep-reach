@@ -3,22 +3,15 @@ import map from 'ramda/src/map'
 import prop from 'ramda/src/prop'
 
 import StateDefsSvg from '/src/jsx/StateDefsSvg.jsx'
-import Rep from '/src/jsx/Rep.jsx'
+import RepSet from '/src/jsx/RepSet.jsx'
 
 import './GovtLevelWrappers.css'
 
-const Reps = ({ reps }) => map(
-	({
-		officeName, officialName, officialChannels, officialEmails, officialPages,
-		officialPhones,
-	}) => (
-		<Rep
+const Officials = ({ reps }) => map(
+	({ officeName, officials }) => (
+		<RepSet
 			officeName={officeName}
-			officialChannels={officialChannels}
-			officialName={officialName}
-			officialEmails={officialEmails}
-			officialPages={officialPages}
-			officialPhones={officialPhones}
+			officials={officials}
 		/>
 	),
 	reps,
@@ -32,7 +25,7 @@ const LevelSection = ({ level, reps, city, state }) => (
 			</div>
 			<div class="sectionDivider" />
 		</div>
-		<Reps reps={prop(level, reps)} />
+		<Officials reps={prop(level, reps)} />
 	</div>
 )
 
@@ -40,6 +33,7 @@ const GovtLevelWrappers = ({ levels, reps, city, state }) => {
 	if (!levels.length) {
 		return null
 	}
+	console.log(reps)
 	return (
 		<Fragment>
 			<StateDefsSvg />

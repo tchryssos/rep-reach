@@ -1,0 +1,16 @@
+.officeWrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 16px;
+}
+
+.repWrapper {
+	display: flex;
+	flex-direction: column;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.repWrapper:last-child {
+	margin-bottom: 0;
+}
