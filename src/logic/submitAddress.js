@@ -5,9 +5,9 @@ import map from 'ramda/src/map'
 import reduceBy from 'ramda/src/reduceBy'
 import 'regenerator-runtime/runtime'
 
-const fetchCivicData = async (zip) => {
+const fetchCivicData = async (addressString) => {
 	const resp = await fetch(
-		`https://www.googleapis.com/civicinfo/v2/representatives?address=${zip}&key=${process.env.CIVIC_API_KEY}`,
+		`https://www.googleapis.com/civicinfo/v2/representatives?address=${addressString}&key=${process.env.CIVIC_API_KEY}`,
 	)
 	return resp.json()
 }
@@ -35,9 +35,12 @@ const buildOffices = (offices, civicData) => reduceBy(
 	offices,
 )
 
-export default async (zipcode, setValue, setReps, setState, setCity) => {
-	const formattedRepData = await fetchCivicData(zipcode)
+export default async (value, setValue, setReps, setState, setCity) => {
+	const { zip, street = '' } = value
+	const addressString = encodeURIComponent(`${street}${zip}`)
+	const formattedRepData = await fetchCivicData(addressString)
 		.then((data) => {
+			console.log(data)
 			const officesLowerThanVP = slice(
 				2, Infinity, prop('offices', data)
 			)
@@ -46,5 +49,5 @@ export default async (zipcode, setValue, setReps, setState, setCity) => {
 			return buildOffices(officesLowerThanVP, data)
 		})
 		setReps(formattedRepData)
-		setValue('')
+		setValue({ street: '', zip: ''})
 }

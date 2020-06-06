@@ -12,7 +12,6 @@ const AddressForm = ({ setReps, setState, setCity }) =>  {
 		street: '',
 		zip: '',
 	})
-	console.log(value)
 
 	const onSubmit = async (e) => {
 		e.preventDefault()
