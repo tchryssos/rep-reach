@@ -17,7 +17,7 @@ const Officials = ({ reps }) => map(
 	reps,
 )
 
-const LevelSection = ({ level, reps, city, state }) => (
+const LevelSection = ({ level, reps }) => (
 	<div class="levelSection">
 		<div class="sectionHeader">
 			<div class="sectionTitleWrapper">
@@ -29,7 +29,7 @@ const LevelSection = ({ level, reps, city, state }) => (
 	</div>
 )
 
-const GovtLevelWrappers = ({ levels, reps, city, state }) => {
+const GovtLevelWrappers = ({ levels, reps }) => {
 	if (!levels.length) {
 		return null
 	}
@@ -42,8 +42,6 @@ const GovtLevelWrappers = ({ levels, reps, city, state }) => {
 					<LevelSection
 						level={level}
 						reps={reps}
-						city={city}
-						state={state}
 					/>
 				),
 				levels,

@@ -24,3 +24,7 @@ h1 {
 .sectionPadding {
 	margin-top: 16px;
 }
+
+.italic {
+	font-style: italic;
+}
