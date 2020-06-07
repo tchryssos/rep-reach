@@ -14,3 +14,14 @@
 .repWrapper:last-child {
 	margin-bottom: 0;
 }
+
+.iconRow {
+	display: flex;
+	align-items: center;
+}
+
+.iconWrapper {
+	height: 24px;
+	width: 24px;
+	margin-right: 8px;
+}
