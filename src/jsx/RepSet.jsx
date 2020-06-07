@@ -56,8 +56,9 @@ const ContactText = ({ type, contactPoint }) => {
 					SocialIcon = TwitterIcon
 					break;
 				case 'youtube':
-					SocialIcon = YouTubeIcon
-					break;
+					// Ignore youtube
+					// Civic API channel data is inconsistent
+					return null
 				default:
 					break;
 			}
