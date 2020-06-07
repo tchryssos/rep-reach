@@ -1,11 +1,16 @@
-import { h } from 'preact'
+import { h, Fragment } from 'preact'
 import map from 'ramda/src/map'
 import replace from 'ramda/src/replace'
 import prop from 'ramda/src/prop'
 
+import orNull from '/src/logic/orNull.js'
+
 import PhoneIcon from '/src/jsx/Icons/PhoneIcon'
 import EmailIcon from '/src/jsx/Icons/EmailIcon'
 import WebIcon from '/src/jsx/Icons/WebIcon'
+import FacebookIcon from '/src/jsx/Icons/FacebookIcon'
+import TwitterIcon from '/src/jsx/Icons/TwitterIcon'
+import YouTubeIcon from '/src/jsx/Icons/YouTubeIcon'
 
 import './RepSet.css'
 
@@ -42,19 +47,36 @@ const ContactText = ({ type, contactPoint }) => {
 		case 'social': {
 			const socialId = prop('id', formattedContact)
 			const socialService = prop('type', formattedContact)
-			console.log(socialService)
+			let SocialIcon = WebIcon
+			switch (socialService.toLowerCase()) {
+				case 'facebook':
+					SocialIcon = FacebookIcon
+					break;
+				case 'twitter':
+					SocialIcon = TwitterIcon
+					break;
+				case 'youtube':
+					SocialIcon = YouTubeIcon
+					break;
+				default:
+					break;
+			}
 			return (
-				<a
-					target="_blank"
-					rel="noreferrer"
-					href={`https://www.${socialService}.com/${socialId}`}
-				>
-					{socialService.toLowerCase() === 'twitter' ? '@' : ''}{socialId}
-				</a>
+				<Fragment>
+					<div class="iconWrapper">
+						<SocialIcon />
+					</div>
+					<a
+						target="_blank"
+						rel="noreferrer"
+						href={`https://www.${socialService}.com/${socialId}`}
+					>
+						{socialService.toLowerCase() === 'twitter' ? '@' : ''}{socialId}
+					</a>
+				</Fragment>
 			)
 		}
 		default:
-			console.log(formattedContact)
 			return (
 				<a
 					target="_blank"
@@ -67,22 +89,23 @@ const ContactText = ({ type, contactPoint }) => {
 	}
 }
 
-const Contacts = ({ Icon, contactInfo = [], type }) => {
-	if (!contactInfo.length) {
-		return null
-	}
-	return map(
+const Contacts = ({ Icon, contactInfo = [], type }) => orNull(
+	contactInfo.length,
+	map(
 		(contactPoint) => (
 			<div class="iconRow">
-				<div class="iconWrapper">
-					<Icon />
-				</div>
+				{orNull(
+					type !== 'social',
+					<div class="iconWrapper">
+						<Icon />
+					</div>
+				)}
 				<ContactText type={type} contactPoint={contactPoint} />
 			</div>
 		),
 		contactInfo,
 	)
-}
+)
 
 const RepSet = ({ officeName, officials }) => {
 	return (
