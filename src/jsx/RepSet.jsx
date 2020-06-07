@@ -1,9 +1,11 @@
 import { h } from 'preact'
 import map from 'ramda/src/map'
 import replace from 'ramda/src/replace'
+import prop from 'ramda/src/prop'
 
 import PhoneIcon from '/src/jsx/Icons/PhoneIcon'
 import EmailIcon from '/src/jsx/Icons/EmailIcon'
+import WebIcon from '/src/jsx/Icons/WebIcon'
 
 import './RepSet.css'
 
@@ -37,8 +39,31 @@ const ContactText = ({ type, contactPoint }) => {
 					{contactPoint}
 				</a>
 			)
+		case 'social': {
+			const socialId = prop('id', formattedContact)
+			const socialService = prop('type', formattedContact)
+			console.log(socialService)
+			return (
+				<a
+					target="_blank"
+					rel="noreferrer"
+					href={`https://www.${socialService}.com/${socialId}`}
+				>
+					{socialService.toLowerCase() === 'twitter' ? '@' : ''}{socialId}
+				</a>
+			)
+		}
 		default:
-			return <p>{formattedContact}</p>
+			console.log(formattedContact)
+			return (
+				<a
+					target="_blank"
+					rel="noreferrer"
+					href={formattedContact}
+				>
+					{formattedContact}
+				</a>
+			)
 	}
 }
 
@@ -79,6 +104,16 @@ const RepSet = ({ officeName, officials }) => {
 							contactInfo={officialPhones}
 							Icon={PhoneIcon}
 							type="phone"
+						/>
+						<Contacts
+							contactInfo={officialPages}
+							Icon={WebIcon}
+							type="webpage"
+						/>
+						<Contacts
+							contactInfo={officialChannels}
+							Icon={PhoneIcon}
+							type="social"
 						/>
 					</div>
 				),
