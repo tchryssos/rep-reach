@@ -54,8 +54,10 @@ const buildOffices = (offices, civicData) => reduceBy(
 )
 
 export default async (value, setValue, setReps, setState, setCity) => {
+	// @TODO Add some kind of form validation
 	const { zip, street = '' } = value
 	const addressString = encodeURIComponent(`${street}${zip}`)
+	// @TODO Add error state for address search
 	const formattedRepData = await fetchCivicData(addressString)
 		.then((data) => {
 			const officesLowerThanVP = slice(
