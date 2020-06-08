@@ -1,7 +1,10 @@
 .levelSection {
 	width: 100%;
-	max-width: 500px;
 	margin-top: 16px;
+}
+
+.dividerMargin {
+	margin-left: 8px;
 }
 
 .sectionHeader {
@@ -15,9 +18,8 @@
 	text-transform: capitalize;
 }
 
-.sectionDivider {
-	height: 1px;
-	background-color: black;
-	margin-left: 8px;
+.officialsWrapper {
+	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 }

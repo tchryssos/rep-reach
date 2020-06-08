@@ -10,7 +10,7 @@ import EmailIcon from '/src/jsx/Icons/EmailIcon'
 import WebIcon from '/src/jsx/Icons/WebIcon'
 import FacebookIcon from '/src/jsx/Icons/FacebookIcon'
 import TwitterIcon from '/src/jsx/Icons/TwitterIcon'
-import YouTubeIcon from '/src/jsx/Icons/YouTubeIcon'
+import Divider from '/src/jsx/Divider.jsx'
 
 import './RepSet.css'
 
@@ -112,37 +112,40 @@ const RepSet = ({ officeName, officials }) => {
 	return (
 		<div class="officeWrapper">
 			<h3>{officeName}</h3>
-			{map(
-				({
-					officialName, officialChannels, officialEmails, officialPages,
-					officialPhones,
-				}) => (
-					<div class="repWrapper">
-						<h4>{officialName}</h4>
-						<Contacts
-							contactInfo={officialEmails}
-							type="email"
-							Icon={EmailIcon}
-						/>
-						<Contacts
-							contactInfo={officialPhones}
-							Icon={PhoneIcon}
-							type="phone"
-						/>
-						<Contacts
-							contactInfo={officialPages}
-							Icon={WebIcon}
-							type="webpage"
-						/>
-						<Contacts
-							contactInfo={officialChannels}
-							Icon={PhoneIcon}
-							type="social"
-						/>
-					</div>
-				),
-				officials,
-			)}
+			<Divider dashed />
+			<div class="officeRepsWrapper">
+				{map(
+					({
+						officialName, officialChannels, officialEmails, officialPages,
+						officialPhones,
+					}) => (
+						<div class="repWrapper">
+							<h4>{officialName}</h4>
+							<Contacts
+								contactInfo={officialEmails}
+								type="email"
+								Icon={EmailIcon}
+							/>
+							<Contacts
+								contactInfo={officialPhones}
+								Icon={PhoneIcon}
+								type="phone"
+							/>
+							<Contacts
+								contactInfo={officialPages}
+								Icon={WebIcon}
+								type="webpage"
+							/>
+							<Contacts
+								contactInfo={officialChannels}
+								Icon={PhoneIcon}
+								type="social"
+							/>
+						</div>
+					),
+					officials,
+				)}
+			</div>
 		</div>
 	)
 }

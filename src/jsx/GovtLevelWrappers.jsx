@@ -4,6 +4,7 @@ import prop from 'ramda/src/prop'
 
 import StateDefsSvg from '/src/jsx/StateDefsSvg.jsx'
 import RepSet from '/src/jsx/RepSet.jsx'
+import Divider from '/src/jsx/Divider.jsx'
 
 import './GovtLevelWrappers.css'
 
@@ -23,9 +24,11 @@ const LevelSection = ({ level, reps }) => (
 			<div class="sectionTitleWrapper">
 				<h2>{level}</h2>
 			</div>
-			<div class="sectionDivider" />
+			<Divider className="dividerMargin" />
 		</div>
-		<Officials reps={prop(level, reps)} />
+		<div class="officialsWrapper">
+			<Officials reps={prop(level, reps)} />
+		</div>
 	</div>
 )
 
@@ -33,7 +36,6 @@ const GovtLevelWrappers = ({ levels, reps }) => {
 	if (!levels.length) {
 		return null
 	}
-	console.log(reps)
 	return (
 		<Fragment>
 			<StateDefsSvg />

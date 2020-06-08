@@ -1,0 +1,9 @@
+.divider {
+	height: 1px;
+	border-bottom: 1px solid black;
+	width: 100%;
+}
+
+.dashed {
+	border-bottom: 1px dashed black;
+}

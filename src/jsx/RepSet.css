@@ -2,13 +2,21 @@
 	display: flex;
 	flex-direction: column;
 	margin-top: 16px;
+	margin-right: 16px;
+}
+
+.officeRepsWrapper {
+	display: flex;
 }
 
 .repWrapper {
 	display: flex;
 	flex-direction: column;
-	margin-top: 8px;
-	margin-bottom: 8px;
+	margin: 8px 16px 8px 0;
+}
+
+.repWrapper:last-child {
+	margin-right: 0;
 }
 
 .repWrapper:last-child {
