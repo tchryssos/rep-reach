@@ -2,7 +2,6 @@ import { h, Fragment } from 'preact'
 import map from 'ramda/src/map'
 import prop from 'ramda/src/prop'
 
-import StateDefsSvg from '/src/jsx/StateDefsSvg.jsx'
 import RepSet from '/src/jsx/RepSet.jsx'
 import Divider from '/src/jsx/Divider.jsx'
 
@@ -39,7 +38,6 @@ const GovtLevelWrappers = ({ levels, reps, viewSocials, }) => {
 	}
 	return (
 		<Fragment>
-			<StateDefsSvg />
 			{map(
 				(level) => (
 					<LevelSection
