@@ -4,7 +4,7 @@ html, body {
 	font-family: 'Jost', sans-serif;
 }
 
-div {
+div, form {
 	box-sizing: border-box;
 }
 
@@ -32,4 +32,11 @@ h1 {
 .viewSocialsLabel {
 	display: flex;
 	flex-direction: row;
+	align-items: center;
+	height: 48px;
+}
+
+.viewSocialCheckbox {
+	width: 24px;
+	height: 24px;
 }

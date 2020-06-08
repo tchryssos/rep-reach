@@ -39,6 +39,7 @@ const App = () => {
 						id="viewSocials"
 						name="viewSocials"
 						onChange={socialOnChange}
+						class="viewSocialCheckbox"
 					/>
 				</label>
 			)}

@@ -4,19 +4,26 @@ label {
 	flex-direction: column;
 }
 
+input {
+	width: 100%;
+	box-sizing: border-box;
+}
+
 #addressForm {
+	width: 100%;
+	max-width: 600px;
 	display: flex;
 	flex-direction: column;
 	border: 1px solid black;
 	padding: 8px;
 	width: -moz-fit-content;
-	width: fit-content;
 	align-items: center;
 	margin-bottom: 16px;
 }
 
 .inputWrapper {
 	display: flex;
+	width: 100%;
 	flex-direction: column;
 }
 
