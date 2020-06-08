@@ -7,7 +7,7 @@ import submitAddress from '/src/logic/submitAddress'
 
 import './AddressForm.css'
 
-const AddressForm = ({ setReps, setState, setCity }) =>  {
+const AddressForm = ({ setReps, setState, setCity, name, setName, }) =>  {
 	const [value, setValue] = useState({
 		street: '',
 		zip: '',
@@ -18,14 +18,27 @@ const AddressForm = ({ setReps, setState, setCity }) =>  {
 		await submitAddress(value, setValue, setReps, setState, setCity)
 	}
 
-	const onInput = (e) => {
+	const onInput = (extSet) => (e) => {
 		const { value: inputValue, id } = e.target
+		if (extSet) {
+			return extSet(inputValue)
+		}
 		setValue(assoc(id, inputValue, value))
 	}
 
 	return (
 		<form id="addressForm" onSubmit={onSubmit}>
 			<div class="inputWrapper">
+			<label for="name">
+					Name:
+					<input
+						id="name"
+						name="name"
+						value={name}
+						type="text"
+						onInput={onInput(setName)}
+					/>
+				</label>
 				<label for="street">
 					Street Address:
 					<input

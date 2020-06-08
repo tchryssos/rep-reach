@@ -12,12 +12,15 @@ const App = () => {
 	const [reps, setReps] = useState(emptyArr)
 	const [state, setState] = useState('')
 	const [city, setCity] = useState('')
+	const [name, setName] = useState('')
 	return (
 		<div class="bodyWrapper">
 			<AddressForm
 				setReps={setReps}
 				setState={setState}
 				setCity={setCity}
+				name={name}
+				setName={setName}
 			/>
 			<GovtLevelWrappers
 				levels={keys(reps)}
