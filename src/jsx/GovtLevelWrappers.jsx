@@ -8,17 +8,18 @@ import Divider from '/src/jsx/Divider.jsx'
 
 import './GovtLevelWrappers.css'
 
-const Officials = ({ reps }) => map(
+const Officials = ({ reps, viewSocials, }) => map(
 	({ officeName, officials }) => (
 		<RepSet
 			officeName={officeName}
 			officials={officials}
+			viewSocials={viewSocials}
 		/>
 	),
 	reps,
 )
 
-const LevelSection = ({ level, reps }) => (
+const LevelSection = ({ level, reps, viewSocials }) => (
 	<div class="levelSection">
 		<div class="sectionHeader">
 			<div class="sectionTitleWrapper">
@@ -27,12 +28,12 @@ const LevelSection = ({ level, reps }) => (
 			<Divider className="dividerMargin" />
 		</div>
 		<div class="officialsWrapper">
-			<Officials reps={prop(level, reps)} />
+			<Officials reps={prop(level, reps)} viewSocials={viewSocials} />
 		</div>
 	</div>
 )
 
-const GovtLevelWrappers = ({ levels, reps }) => {
+const GovtLevelWrappers = ({ levels, reps, viewSocials, }) => {
 	if (!levels.length) {
 		return null
 	}
@@ -44,6 +45,7 @@ const GovtLevelWrappers = ({ levels, reps }) => {
 					<LevelSection
 						level={level}
 						reps={reps}
+						viewSocials={viewSocials}
 					/>
 				),
 				levels,

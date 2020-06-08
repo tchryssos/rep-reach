@@ -21,9 +21,10 @@ const AddressForm = ({ setReps, setState, setCity, name, setName, }) =>  {
 	const onInput = (extSet) => (e) => {
 		const { value: inputValue, id } = e.target
 		if (extSet) {
-			return extSet(inputValue)
+			extSet(inputValue)
+		} else {
+			setValue(assoc(id, inputValue, value))
 		}
-		setValue(assoc(id, inputValue, value))
 	}
 
 	return (
@@ -46,7 +47,7 @@ const AddressForm = ({ setReps, setState, setCity, name, setName, }) =>  {
 						name="street"
 						value={prop('street', value)}
 						type="text"
-						onInput={onInput}
+						onInput={onInput()}
 					/>
 				</label>
 				<label for="zip">
@@ -56,7 +57,7 @@ const AddressForm = ({ setReps, setState, setCity, name, setName, }) =>  {
 						name="zip"
 						value={prop('zip', value)}
 						type="text"
-						onInput={onInput}
+						onInput={onInput()}
 					/>
 				</label>
 			</div>

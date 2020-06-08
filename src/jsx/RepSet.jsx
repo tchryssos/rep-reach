@@ -90,8 +90,12 @@ const ContactText = ({ type, contactPoint }) => {
 	}
 }
 
-const Contacts = ({ Icon, contactInfo = [], type }) => orNull(
-	contactInfo.length,
+const Contacts = ({ Icon, contactInfo = [], type, viewSocials }) => orNull(
+	contactInfo.length
+	&& (
+		type !== 'social'
+		|| viewSocials
+	),
 	map(
 		(contactPoint) => (
 			<div class="iconRow">
@@ -108,7 +112,7 @@ const Contacts = ({ Icon, contactInfo = [], type }) => orNull(
 	)
 )
 
-const RepSet = ({ officeName, officials }) => {
+const RepSet = ({ officeName, officials, viewSocials }) => {
 	return (
 		<div class="officeWrapper">
 			<h3>{officeName}</h3>
@@ -139,6 +143,7 @@ const RepSet = ({ officeName, officials }) => {
 							<Contacts
 								contactInfo={officialChannels}
 								Icon={PhoneIcon}
+								viewSocials={viewSocials}
 								type="social"
 							/>
 						</div>

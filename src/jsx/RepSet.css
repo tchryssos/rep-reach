@@ -7,6 +7,7 @@
 
 .officeRepsWrapper {
 	display: flex;
+	flex-wrap: wrap;
 }
 
 .repWrapper {

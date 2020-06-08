@@ -28,3 +28,8 @@ h1 {
 .italic {
 	font-style: italic;
 }
+
+.viewSocialsLabel {
+	display: flex;
+	flex-direction: row;
+}
